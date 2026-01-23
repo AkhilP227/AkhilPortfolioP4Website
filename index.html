@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* --- CSS VARIABLES (Blue & White Theme) --- */
+        :root {
+            --primary-blue: #0056b3;
+            --secondary-blue: #e6f0fa;
+            --dark-blue: #003d80;
+            --white: #ffffff;
+            --text-color: #333;
+            --gray: #f4f4f4;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-blue);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-blue);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: #b3d7ff;
+            text-decoration: underline;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        main {
+            flex: 1; /* Pushes footer down */
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* --- PAGE SECTIONS --- */
+        .page-section {
+            display: none; /* Hidden by default */
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-section.active-section {
+            display: block; /* Show only active section */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* --- HOME PAGE --- */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* --- ABOUT PAGE --- */
+        .skills-list {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary-blue);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- PORTFOLIO/PROJECTS PAGE --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        /* --- CONTACT PAGE --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid var(--primary-blue);
+            border-color: transparent;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DevPortfolio</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+            <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+            <li><a onclick="showPage('projects')" id="nav-projects">Projects</a></li>
+            <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+        <section id="home" class="page-section active-section">
+            <div class="hero">
+                <h1>Welcome! I'm Akhil</h1>
+                <h2>Aspiring Web Developer</h2>
+                <p>
+                    I create clean, responsive websites and I am passionate about learning 
+                    new technologies. This is my journey into the world of coding.
+                </p>
+                <button class="btn" onclick="showPage('projects')">View My Work</button>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <h1>About Me</h1>
+            <p>
+                Hello! I am a beginner programmer based in California. 
+                I recently started my journey in tech and I am focusing on building 
+                strong fundamentals in web development.
+            </p>
+            <p>
+                I enjoy solving problems and turning ideas into reality through code. 
+                When I'm not coding, I enjoy sports and music.
+            </p>
+            
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <h2>My Tech Stack</h2>
+            <ul class="skills-list">
+                <li class="skill-tag">HTML5</li>
+                <li class="skill-tag">CSS3</li>
+                <li class="skill-tag">JavaScript</li>
+                <li class="skill-tag">Git</li>
+                <li class="skill-tag">VS Code</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="page-section">
+            <h1>My Projects</h1>
+            <p>Here are a few things I've built while learning:</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Personal Portfolio</h3>
+                    <p>You are looking at it! A responsive portfolio site built with HTML, CSS, and vanilla JavaScript.</p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>To-Do List App</h3>
+                    <p>A simple application to manage daily tasks. Features include adding, deleting, and marking tasks as done.</p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Weather Widget</h3>
+                    <p>A widget that fetches data from an API to display the current temperature in your city.</p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <h1>Contact Me</h1>
+            <p>I'm currently open to junior developer roles and freelance opportunities. Feel free to reach out!</p>
+            
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for the message! (This is a demo)');">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="How can I help you?" required></textarea>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <div style="margin-top: 2rem;">
+                <h3>Or email me directly:</h3>
+                <a href="mailto:email@example.com" style="color: var(--primary-blue);">email@example.com</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 [Your Name]. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // 1. Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active-section');
+            });
+
+            // 2. Show the specific page selected
+            document.getElementById(pageId).classList.add('active-section');
+
+            // 3. Update Navigation Active State
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById('nav-' + pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
