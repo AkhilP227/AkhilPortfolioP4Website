@@ -3,129 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akhil's Portfolio</title>
+    <title>Akhil Pidatala | Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS VARIABLES --- */
+        /* --- DESIGN SYSTEM --- */
         :root {
-            --primary-blue: #0056b3;
-            --secondary-blue: #e6f0fa;
-            --dark-blue: #003d80;
-            --white: #ffffff;
-            --text-color: #333;
-            --gray: #f4f4f4;
+            --bg-deep: #0f172a;
+            --bg-card: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        /* --- GLOBAL STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--secondary-blue); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body { 
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
         /* --- NAVIGATION --- */
-        nav { background-color: var(--primary-blue); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .logo { color: var(--white); font-size: 1.5rem; font-weight: bold; }
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links li a { color: var(--white); text-decoration: none; font-weight: 500; cursor: pointer; transition: color 0.3s; }
-        .nav-links li a:hover, .nav-links li a.active { color: #b3d7ff; text-decoration: underline; }
-
-        /* --- MAIN CONTAINER --- */
-        main { flex: 1; max-width: 1000px; margin: 2rem auto; padding: 0 20px; width: 100%; }
-
-        /* --- PAGE SECTIONS --- */
-        .page-section { display: none; background-color: var(--white); padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: fadeIn 0.4s ease-in-out; }
-        .page-section.active-section { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h1 { color: var(--primary-blue); margin-bottom: 0.5rem; font-size: 2rem; }
-        h2 { color: var(--primary-blue); margin-top: 1.5rem; margin-bottom: 1rem; }
-        p { line-height: 1.7; margin-bottom: 1rem; color: #444; }
-
-        /* --- BUTTONS --- */
-        .btn { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 12px 24px; border-radius: 6px; text-decoration: none; margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem; transition: background 0.3s; }
-        .btn:hover { background-color: var(--dark-blue); }
-
-        /* --- ABOUT & SKILLS --- */
-        .skills-list { list-style: none; display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1rem; }
-        .skill-tag { background-color: var(--secondary-blue); color: var(--primary-blue); padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
-        .hero { text-align: center; padding: 4rem 1rem; }
-
-        /* --- NEW SIDE-BY-SIDE PROJECTS LAYOUT --- */
-        .project-list {
+        nav { 
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 10%;
             display: flex;
-            flex-direction: column;
-            gap: 30px; /* Space between projects */
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            display: flex; /* Makes the card Horizontal */
-            flex-direction: row;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            align-items: center; /* Vertically centers the text */
-            height: 300px; /* Enforces a maximum height for consistency */
-        }
-
-        /* The Video Box (Left Side) */
-        .video-container {
-            width: 45%; /* Takes up 45% of the width */
-            height: 100%; /* Fills full height of the card */
-            background-color: #000;
-            display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            flex-shrink: 0; /* Prevents video from shrinking */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--accent-blue); letter-spacing: -1px; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links li a { 
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .nav-links li a:hover, .nav-links li a.active { color: var(--accent-blue); }
+
+        /* --- LAYOUT --- */
+        main { max-width: 1100px; margin: 0 auto; padding: 4rem 20px; }
+
+        .page-section { 
+            display: none; 
+            animation: fadeIn 0.6s ease-out;
+        }
+        .page-section.active-section { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- HOME PAGE (Interactive) --- */
+        .hero { text-align: center; padding: 6rem 0; }
+        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 10px; }
+        .hero .typing-text { 
+            font-size: 1.5rem; 
+            color: var(--accent-blue); 
+            border-right: 3px solid var(--accent-blue);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            margin: 0 auto;
+            animation: typing 3s steps(30) forwards, blink 0.8s infinite;
+        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { 50% { border-color: transparent } }
+
+        .hero-features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin-top: 5rem;
+        }
+        .feature-box { 
+            background: var(--glass); 
+            padding: 2rem; 
+            border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+        .feature-box:hover { background: rgba(56, 189, 248, 0.05); transform: translateY(-5px); }
+        .feature-box h3 { color: var(--accent-blue); margin-bottom: 10px; }
+
+        /* --- ABOUT PAGE (Organized) --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 2rem; }
+        .about-col h2 { color: var(--accent-blue); margin-bottom: 15px; font-size: 1.8rem; }
+        .about-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--accent-blue); }
+        
+        .skill-tag { 
+            background: rgba(56, 189, 248, 0.1); 
+            color: var(--accent-blue); 
+            padding: 5px 15px; 
+            border-radius: 5px; 
+            font-weight: 600; 
+            font-size: 0.8rem;
+            margin: 5px;
+            display: inline-block;
         }
 
-        .project-video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Ensures video fits perfectly inside without stretching */
+        /* --- PROJECTS PAGE --- */
+        .project-card { 
+            display: flex; 
+            background: var(--bg-card); 
+            border-radius: 16px; 
+            overflow: hidden; 
+            margin-bottom: 40px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            height: 350px;
+        }
+        .video-container { width: 50%; background: #000; }
+        .project-video { width: 100%; height: 100%; object-fit: contain; }
+        .project-details { width: 50%; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+        .project-details h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent-blue); }
+
+        /* --- BUTTONS & INPUTS --- */
+        .btn { 
+            background: var(--accent-blue); 
+            color: var(--bg-deep); 
+            padding: 12px 30px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: 0.3s; 
+            display: inline-block;
+            border: none; cursor: pointer;
+        }
+        .btn:hover { box-shadow: 0 0 20px var(--accent-glow); transform: scale(1.05); }
+
+        input, textarea { 
+            background: var(--bg-card); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            color: white; padding: 15px; 
+            border-radius: 8px; margin-bottom: 15px; width: 100%; 
         }
 
-        /* The Text Box (Right Side) */
-        .project-details {
-            padding: 2rem;
-            width: 55%; /* Takes up the remaining space */
-            overflow-y: auto; /* Adds scroll to text if it's too long, rather than the whole page */
-        }
+        footer { text-align: center; padding: 3rem; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        .project-details h3 { margin-bottom: 0.8rem; color: var(--dark-blue); font-size: 1.5rem; }
-        .project-details p { font-size: 1rem; color: #555; margin-bottom: 0; }
-
-        /* --- FORMS --- */
-        .contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; }
-        input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; width: 100%; }
-
-        /* --- FOOTER --- */
-        footer { background-color: var(--primary-blue); color: var(--white); text-align: center; padding: 1.5rem; margin-top: auto; }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 1rem; text-align: center; }
-            .nav-links { flex-direction: column; gap: 10px; }
-            
-            /* Stack projects vertically on small screens */
-            .project-card {
-                flex-direction: column;
-                height: auto; /* Let height grow naturally on mobile */
-            }
-            .video-container {
-                width: 100%;
-                height: 250px; /* Fixed height for video on mobile */
-            }
-            .project-details {
-                width: 100%;
-                padding: 1.5rem;
-            }
+        @media (max-width: 850px) {
+            .about-grid, .project-card { grid-template-columns: 1fr; flex-direction: column; height: auto; }
+            .video-container, .project-details { width: 100%; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Akhil's Portfolio</div>
+        <div class="logo">AKHIL.DEV</div>
         <ul class="nav-links">
             <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
             <li><a onclick="showPage('about')" id="nav-about">About</a></li>
@@ -138,53 +169,79 @@
         
         <section id="home" class="page-section active-section">
             <div class="hero">
-                <h1>Welcome! I'm Akhil</h1>
-                <h2>Aspiring Web Developer</h2>
-                <p>I create clean, responsive websites and I am passionate about learning new technologies.</p>
-                <button class="btn" onclick="showPage('projects')">View My Work</button>
+                <h1>Hi, I'm Akhil</h1>
+                <div class="typing-text">Aspiring Web Developer & Entrepreneur</div>
+                <p style="color: var(--text-secondary); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    I build digital experiences that combine clean code with creative problem-solving.
+                </p>
+                <div style="margin-top: 30px;">
+                    <button class="btn" onclick="showPage('projects')">Explore My Work</button>
+                </div>
+
+                <div class="hero-features">
+                    <div class="feature-box">
+                        <h3>Clean Code</h3>
+                        <p>Writing scalable, readable, and efficient HTML, CSS, and JS.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Problem Solver</h3>
+                        <p>Identifying bottlenecks and creating data-driven solutions.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Leader</h3>
+                        <p>Experienced in club management and team collaboration.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="about" class="page-section">
-            <h1>About Me</h1>
-            <p>
-                I aspire to be an entrepreneur and start my own business in the technology industry. I want to utilize tools such as AI and data analytics to find real-world problems and create solutions. To achieve this goal, I plan to attend a four-year university in California to strengthen my foundations, expand my work, and gain more experience. The concept of AI has always fascinated me since I saw it on television and now when I interact with it almost on a daily basis. 
-I am able to identify problems quickly and focus to find solutions. My persistence has allowed me to push through various obstacles I have faced whether it is in sports, my studies, or in life overall. As a member of the badminton team, I have demonstrated my ability to collaborate, stay disciplined, and stay focused. I have also served as the Director of Club Management for the Finance and Economics Club at Emerald High School. This strengthened my leadership and organizational skills. 
-In high school I have been able to balance my grades with my life outside. Healthy relationships with my friends and family are important to me and with all the pressure from school I had to manage my time very efficiently. Having to do this greatly improved my time management skills. Through my various hardships in my classes, sports, and at home, I have learned my best learning styles and my largest areas for improvement. I understood that I was more productive when I was collaborating and having leadership in the club has shown me my ability to be organized and think quickly. 
-Throughout the past fifteen years, I have grown, adapted, and learned much more about myself and who I want to be. As I continue to face new challenges and fail more times, I will continuously improve as well. Every obstacle I overcome is a sign of growth and will take me one step closer to my goal of accomplishing creative innovation in the field of technology and AI. Thank you for taking the time to read a little about me and please explore the rest of my site when you are able to.
+            <h1 style="margin-bottom: 2rem;">My Story</h1>
+            
+            <div class="about-grid">
+                <div class="about-col">
+                    <div class="about-card">
+                        <h2>The Vision</h2>
+                        <p>I aspire to be an entrepreneur in the tech industry, utilizing AI and data analytics to solve real-world problems. My goal is to build foundations at a top California university to innovate at the intersection of technology and business.</p>
+                    </div>
+                    <div class="about-card">
+                        <h2>Leadership</h2>
+                        <p>As the <strong>Director of Club Management</strong> for the Finance and Economics Club, I honed my organizational and leadership skills, learning how to manage complex systems and diverse teams effectively.</p>
+                    </div>
+                </div>
 
-            </p>
-            <p>
-                I enjoy solving problems and turning ideas into reality through code. When I'm not coding, I enjoy sports and music.
-            </p>
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-            <h2>My Tech Stack</h2>
-            <ul class="skills-list">
-                <li class="skill-tag">HTML</li>
-                <li class="skill-tag">JavaScript</li>
-                <li class="skill-tag">Git</li>
-                <li class="skill-tag">VS Code</li>
-            </ul>
+                <div class="about-col">
+                    <div class="about-card">
+                        <h2>Discipline</h2>
+                        <p>Athletics taught me persistence. Being on the <strong>Badminton team</strong> instilled a sense of collaboration and the focus required to balance academic excellence with competitive sports.</p>
+                    </div>
+                    <div class="about-card" style="border-left-color: #fbbf24;">
+                        <h2>Core Skills</h2>
+                        <div>
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">AI Analysis</span>
+                            <span class="skill-tag">Financial Literacy</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="projects" class="page-section">
-            <header>
-                <h1>My Projects</h1>
-                <p>Here are the latest projects I've built, featuring video demos:</p>
-            </header>
+            <h1 style="margin-bottom: 2rem;">Recent Highlights</h1>
             
             <div class="project-list">
-                
                 <article class="project-card">
                     <div class="video-container">
                         <video class="project-video" controls>
-                            <source src="1.2.3 Pizza by the Slice.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
+                            <source src="1.2.3 Pizza by the SLice.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="project-details">
-                        <h3>Pizza by the Slice App</h3>
-                        <p>A utility application designed to help users calculate the best value for their money. By comparing the cost per slice and total surface area, users can instantly see which pizza size offers the best deal. This project demonstrates basic DOM manipulation and mathematical logic in JavaScript.</p>
+                        <h3>Pizza Value App</h3>
+                        <p>A smart utility that calculates cost-per-square-inch to find the best pizza deal. Built to showcase DOM manipulation and real-time logic.</p>
                     </div>
                 </article>
 
@@ -192,53 +249,52 @@ Throughout the past fifteen years, I have grown, adapted, and learned much more 
                     <div class="video-container">
                         <video class="project-video" controls>
                             <source src="escape.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-details">
-                        <h3>Escape Room Game</h3>
-                        <p>An interactive browser-based adventure game. Players are challenged to solve riddles, follow logic paths, and make critical choices to successfully navigate through the story and escape the room. This project showcases conditional logic, state management, and user interaction design.</p>
+                        <h3>Escape Room</h3>
+                        <p>An interactive browser adventure. Features complex decision trees and logic puzzles designed to test user critical thinking.</p>
                     </div>
                 </article>
-
             </div>
         </section>
 
         <section id="contact" class="page-section">
-            <h1>Contact Me</h1>
-            <p>I'm currently open to junior developer roles and freelance opportunities.</p>
-            
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for the message!');">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name" required>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h1>Let's Connect</h1>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">Open for collaborations and opportunities.</p>
                 
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Your Email" required>
-                
-                <label for="message">Message</label>
-                <textarea id="message" rows="5" placeholder="How can I help you?" required></textarea>
-                
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+                <form onsubmit="event.preventDefault(); alert('Message Received!');">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
 
-            <div style="margin-top: 2rem;">
-                <h3>Or email me directly:</h3>
-                <a href="mailto:pidatala7380@mydusd.org" style="color: var(--primary-blue); text-decoration: none; font-weight: bold;">pidatala7380@mydusd.org</a>
+                <div style="margin-top: 3rem;">
+                    <a href="mailto:pidatala7380@mydusd.org" style="color: var(--accent-blue); text-decoration: none;">pidatala7380@mydusd.org</a>
+                </div>
             </div>
         </section>
 
     </main>
 
     <footer>
+        <p>&copy; 2026 Akhil Pidatala. Built with Passion & Code.</p>
+    </footer>
 
     <script>
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-section'));
             document.getElementById(pageId).classList.add('active-section');
+            
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => link.classList.remove('active'));
             document.getElementById('nav-' + pageId).classList.add('active');
+
+            // Scroll to top on page change
+            window.scrollTo(0,0);
         }
     </script>
 </body>
