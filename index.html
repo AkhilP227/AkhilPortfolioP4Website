@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Akhil's Portfolio</title>
     <style>
-        /* --- CSS VARIABLES (Blue & White Theme) --- */
+        /* --- CSS VARIABLES --- */
         :root {
             --primary-blue: #0056b3;
             --secondary-blue: #e6f0fa;
@@ -16,188 +16,108 @@
         }
 
         /* --- GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--secondary-blue);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--secondary-blue); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
 
         /* --- NAVIGATION --- */
-        nav {
-            background-color: var(--primary-blue);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-links li a:hover, .nav-links li a.active {
-            color: #b3d7ff;
-            text-decoration: underline;
-        }
+        nav { background-color: var(--primary-blue); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { color: var(--white); font-size: 1.5rem; font-weight: bold; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links li a { color: var(--white); text-decoration: none; font-weight: 500; cursor: pointer; transition: color 0.3s; }
+        .nav-links li a:hover, .nav-links li a.active { color: #b3d7ff; text-decoration: underline; }
 
         /* --- MAIN CONTAINER --- */
-        main {
-            flex: 1; /* Pushes footer down */
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 20px;
-            width: 100%;
-        }
+        main { flex: 1; max-width: 1000px; margin: 2rem auto; padding: 0 20px; width: 100%; }
 
         /* --- PAGE SECTIONS --- */
-        .page-section {
-            display: none; /* Hidden by default */
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            animation: fadeIn 0.5s ease-in-out;
-        }
+        .page-section { display: none; background-color: var(--white); padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: fadeIn 0.4s ease-in-out; }
+        .page-section.active-section { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .page-section.active-section {
-            display: block; /* Show only active section */
-        }
+        h1 { color: var(--primary-blue); margin-bottom: 0.5rem; font-size: 2rem; }
+        h2 { color: var(--primary-blue); margin-top: 1.5rem; margin-bottom: 1rem; }
+        p { line-height: 1.7; margin-bottom: 1rem; color: #444; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* --- BUTTONS --- */
+        .btn { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 12px 24px; border-radius: 6px; text-decoration: none; margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem; transition: background 0.3s; }
+        .btn:hover { background-color: var(--dark-blue); }
 
-        h1, h2 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
+        /* --- ABOUT & SKILLS --- */
+        .skills-list { list-style: none; display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1rem; }
+        .skill-tag { background-color: var(--secondary-blue); color: var(--primary-blue); padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+        .hero { text-align: center; padding: 4rem 1rem; }
 
-        p {
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        /* --- HOME PAGE --- */
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            cursor: pointer;
-            border: none;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--dark-blue);
-        }
-
-        /* --- ABOUT PAGE --- */
-        .skills-list {
-            list-style: none;
+        /* --- NEW SIDE-BY-SIDE PROJECTS LAYOUT --- */
+        .project-list {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background-color: var(--secondary-blue);
-            color: var(--primary-blue);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* --- PORTFOLIO/PROJECTS PAGE --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            flex-direction: column;
+            gap: 30px; /* Space between projects */
+            margin-top: 2rem;
         }
 
         .project-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s;
+            display: flex; /* Makes the card Horizontal */
+            flex-direction: row;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            align-items: center; /* Vertically centers the text */
+            height: 300px; /* Enforces a maximum height for consistency */
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-blue);
-        }
-
-        /* --- CONTACT PAGE --- */
-        .contact-form {
+        /* The Video Box (Left Side) */
+        .video-container {
+            width: 45%; /* Takes up 45% of the width */
+            height: 100%; /* Fills full height of the card */
+            background-color: #000;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0; /* Prevents video from shrinking */
         }
 
-        input, textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
+        .project-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures video fits perfectly inside without stretching */
         }
 
-        input:focus, textarea:focus {
-            outline: 2px solid var(--primary-blue);
-            border-color: transparent;
+        /* The Text Box (Right Side) */
+        .project-details {
+            padding: 2rem;
+            width: 55%; /* Takes up the remaining space */
+            overflow-y: auto; /* Adds scroll to text if it's too long, rather than the whole page */
         }
+
+        .project-details h3 { margin-bottom: 0.8rem; color: var(--dark-blue); font-size: 1.5rem; }
+        .project-details p { font-size: 1rem; color: #555; margin-bottom: 0; }
+
+        /* --- FORMS --- */
+        .contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; }
+        input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; width: 100%; }
 
         /* --- FOOTER --- */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 1rem;
-            margin-top: auto;
-        }
+        footer { background-color: var(--primary-blue); color: var(--white); text-align: center; padding: 1.5rem; margin-top: auto; }
 
         /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 600px) {
-            nav {
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1rem; text-align: center; }
+            .nav-links { flex-direction: column; gap: 10px; }
+            
+            /* Stack projects vertically on small screens */
+            .project-card {
                 flex-direction: column;
-                gap: 1rem;
+                height: auto; /* Let height grow naturally on mobile */
+            }
+            .video-container {
+                width: 100%;
+                height: 250px; /* Fixed height for video on mobile */
+            }
+            .project-details {
+                width: 100%;
+                padding: 1.5rem;
             }
         }
     </style>
@@ -205,7 +125,7 @@
 <body>
 
     <nav>
-        <div class="logo">DevPortfolio</div>
+        <div class="logo">Akhil's Portfolio</div>
         <ul class="nav-links">
             <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
             <li><a onclick="showPage('about')" id="nav-about">About</a></li>
@@ -220,10 +140,7 @@
             <div class="hero">
                 <h1>Welcome! I'm Akhil</h1>
                 <h2>Aspiring Web Developer</h2>
-                <p>
-                    I create clean, responsive websites and I am passionate about learning 
-                    new technologies. This is my journey into the world of coding.
-                </p>
+                <p>I create clean, responsive websites and I am passionate about learning new technologies.</p>
                 <button class="btn" onclick="showPage('projects')">View My Work</button>
             </div>
         </section>
@@ -238,12 +155,9 @@ Throughout the past fifteen years, I have grown, adapted, and learned much more 
 
             </p>
             <p>
-                I enjoy solving problems and turning ideas into reality through code. 
-                When I'm not coding, I enjoy sports and music.
+                I enjoy solving problems and turning ideas into reality through code. When I'm not coding, I enjoy sports and music.
             </p>
-            
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-            
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
             <h2>My Tech Stack</h2>
             <ul class="skills-list">
                 <li class="skill-tag">HTML</li>
@@ -254,35 +168,47 @@ Throughout the past fifteen years, I have grown, adapted, and learned much more 
         </section>
 
         <section id="projects" class="page-section">
-            <h1>My Projects</h1>
-            <p>Here are a few things I've built while learning:</p>
+            <header>
+                <h1>My Projects</h1>
+                <p>Here are the latest projects I've built, featuring video demos:</p>
+            </header>
             
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Personal Portfolio</h3>
-                    <p>You are looking at it! A responsive portfolio site built with HTML, CSS, and vanilla JavaScript.</p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
-                </div>
+            <div class="project-list">
+                
+                <article class="project-card">
+                    <div class="video-container">
+                        <video class="project-video" controls>
+                            <source src="1.2.3 Pizza by the Slice.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-details">
+                        <h3>Pizza by the Slice App</h3>
+                        <p>A utility application designed to help users calculate the best value for their money. By comparing the cost per slice and total surface area, users can instantly see which pizza size offers the best deal. This project demonstrates basic DOM manipulation and mathematical logic in JavaScript.</p>
+                    </div>
+                </article>
 
-                <div class="project-card">
-                    <h3>To-Do List App</h3>
-                    <p>A simple application to manage daily tasks. Features include adding, deleting, and marking tasks as done.</p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
-                </div>
+                <article class="project-card">
+                    <div class="video-container">
+                        <video class="project-video" controls>
+                            <source src="escape.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-details">
+                        <h3>Escape Room Game</h3>
+                        <p>An interactive browser-based adventure game. Players are challenged to solve riddles, follow logic paths, and make critical choices to successfully navigate through the story and escape the room. This project showcases conditional logic, state management, and user interaction design.</p>
+                    </div>
+                </article>
 
-                <div class="project-card">
-                    <h3>Weather Widget</h3>
-                    <p>A widget that fetches data from an API to display the current temperature in your city.</p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">View Code &rarr;</a>
-                </div>
             </div>
         </section>
 
         <section id="contact" class="page-section">
             <h1>Contact Me</h1>
-            <p>I'm currently open to junior developer roles and freelance opportunities. Feel free to reach out!</p>
+            <p>I'm currently open to junior developer roles and freelance opportunities.</p>
             
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for the message! (This is a demo)');">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for the message!');">
                 <label for="name">Name</label>
                 <input type="text" id="name" placeholder="Your Name" required>
                 
@@ -297,32 +223,21 @@ Throughout the past fifteen years, I have grown, adapted, and learned much more 
 
             <div style="margin-top: 2rem;">
                 <h3>Or email me directly:</h3>
-                <a href="mailto:email@example.com" style="color: var(--primary-blue);">pidatala7380@mydusd.org</a>
+                <a href="mailto:pidatala7380@mydusd.org" style="color: var(--primary-blue); text-decoration: none; font-weight: bold;">pidatala7380@mydusd.org</a>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 [Your Name]. All Rights Reserved.</p>
-    </footer>
 
     <script>
         function showPage(pageId) {
-            // 1. Hide all pages
             const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => {
-                page.classList.remove('active-section');
-            });
-
-            // 2. Show the specific page selected
+            pages.forEach(page => page.classList.remove('active-section'));
             document.getElementById(pageId).classList.add('active-section');
-
-            // 3. Update Navigation Active State
             const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
+            navLinks.forEach(link => link.classList.remove('active'));
             document.getElementById('nav-' + pageId).classList.add('active');
         }
     </script>
